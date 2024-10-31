@@ -37,6 +37,6 @@ def listaReparaciones(request):
     return HttpResponse(reparacion_info)
 
 def detallePropietario(request, dni):
-        propietario = Propietario.objects.get(pk=dni)
+        propietario = Propietario.objects.get(dni=dni)
         return render(request, 'detallePropietario.html', {'propietario': propietario});
         
