@@ -8,10 +8,16 @@
 <body>
     <h1>{{mecanico.nombre}} {{mecanico.apellido1}} {{mecanico.apellido2}}</h1>
     <img src="{{mecanico.imagen_url}}" alt="Imagen de {{mecanico.nombre}} {{mecanico.apellido1}} {{mecanico.apellido2}}">
-    <p>Numero de la Seguridad Social: {{mecanico.num_ss}}</p>
-    <p>Fecha de nacimiento: {{mecanico.fecha_nacimiento}}</p>
-    <p>Dirección: {{mecanico.direccion}}</p>
-    <p>Fecha de inicio del contrato: {{mecanico.fecha_inicio_contrato}}</p>
-    <p>Fecha de fin del contrato: {{mecanico.fecha_fin_contrato}}</p>
+    <p><strong>Numero de la Seguridad Social:</strong> {{mecanico.num_ss}}</p>
+    <p><strong>Fecha de nacimiento:</strong> {{mecanico.fecha_nacimiento}}</p>
+    <p><strong>Dirección:</strong> {{mecanico.direccion}}</p>
+    <p><strong>Fecha de inicio del contrato:</strong> {{mecanico.fecha_inicio_contrato}}</p>
+    <p><strong>Fecha de fin del contrato:</strong> {{mecanico.fecha_fin_contrato}}</p>
+    <p><strong>Reparaciones:</strong></p>
+    <ul>
+        {% for reparacion in reparaciones %}
+            <li><a href="{% url 'detalleReparacion' reparacion.id %}">Nº de reparación: {{reparacion.id}} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
