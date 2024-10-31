@@ -13,7 +13,8 @@ def listaPropietarios(request):
 
 def detallePropietario(request, dni):
         propietario = Propietario.objects.get(dni=dni)
-        return render(request, 'detallePropietario.html', {'propietario': propietario});
+        vehiculos = Vehiculo.objects.filter(propietario=propietario)
+        return render(request, 'detallePropietario.html', {'propietario': propietario, 'vehiculos': vehiculos});
 
 def listaMecanicos(request):
     mecanicos = Mecanico.objects.order_by('nombre')
@@ -33,7 +34,8 @@ def listaVehiculos(request):
 def detalleVehiculo(request, matricula):
     try:
         vehiculo = Vehiculo.objects.get(matricula=matricula)
-        return render(request, 'detalleVehiculo.html', {'vehiculo': vehiculo})
+        reparaciones = Reparacion.objects.filter(vehiculo=vehiculo)
+        return render(request, 'detalleVehiculo.html', {'vehiculo': vehiculo, 'reparaciones': reparaciones})
     except Vehiculo.DoesNotExist:
         return HttpResponseNotFound('No existe el vehículo con la matrícula proporcionada.')
 

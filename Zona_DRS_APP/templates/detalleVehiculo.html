@@ -6,7 +6,7 @@
     <title>{{vehiculo.matricula}} - ZonaDRS</title>
 </head>
 <body>
-    <h1>Detalle del Vehículo</h1>
+    <h1>Detalles del Vehículo</h1>
     <p><strong>Matrícula:</strong> {{ vehiculo.matricula }}</p>
     <p><strong>Tipo:</strong> {{ vehiculo.tipo }}</p>
     <p><strong>Marca:</strong> {{ vehiculo.marca }}</p>
@@ -14,5 +14,11 @@
     <p><strong>Color:</strong> {{ vehiculo.color }}</p>
     <p><strong>Fecha de Fabricación:</strong> {{ vehiculo.fecha_fabricacion }}</p>
     <p><strong>Propietario:</strong> <a href="{% url 'detallePropietario' vehiculo.propietario.dni %}">{{ vehiculo.propietario }}</a></p>
+    <p><strong>Reparaciones:</strong></p>
+    <ul>
+        {% for reparacion in reparaciones %}
+            <li><a href="{% url 'detalleReparacion' reparacion.id %}">{{ reparacion.fecha }} - {{ reparacion.descripcion }}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

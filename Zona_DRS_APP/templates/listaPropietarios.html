@@ -9,14 +9,14 @@
     <h1>Lista de Propietarios</h1>
     <table>
         <tr>
-            <th>Nombre</th>
+            <th>Nombre completo</th>
             <th>DNI</th>
         </tr>
         <tr>
             {% for propietario in propietarios %}
             <td>
                 <a href="{% url 'detallePropietario' propietario.dni %}">
-                    {{ propietario.nombre }}
+                    {{ propietario }}
                 </a>
             </td>
             <td>

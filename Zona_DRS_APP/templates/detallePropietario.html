@@ -7,11 +7,17 @@
 </head>
 <body>
     <h1>{{propietario.nombre}} {{propietario.apellido1}} {{propietario.apellido2}}</h1>
-    <p>DNI: {{propietario.dni}}</p>
-    <p>Nombre: {{propietario.nombre}}</p>
-    <p>Apellido 1: {{propietario.apellido1}}</p>
-    <p>Apellido 2: {{propietario.apellido2}}</p>
-    <p>Fecha de nacimiento: {{propietario.fecha_nacimiento}}</p>
-    <p>Dirección: {{propietario.direccion}}</p>
+    <p><strong>DNI:</strong> {{propietario.dni}}</p>
+    <p><strong>Nombre:</strong> {{propietario.nombre}}</p>
+    <p><strong>Apellido 1:</strong> {{propietario.apellido1}}</p>
+    <p><strong>Apellido 2:</strong> {{propietario.apellido2}}</p>
+    <p><strong>Fecha de nacimiento:</strong> {{propietario.fecha_nacimiento}}</p>
+    <p><strong>Dirección:</strong> {{propietario.direccion}}</p>
+    <p><strong>Vehículos:</strong></p>
+    <ul>
+        {% for vehiculo in vehiculos %}
+            <li><a href="{% url 'detalleVehiculo' vehiculo.matricula %}"> {{vehiculo.marca}} {{vehiculo.modelo}} ({{ vehiculo }})</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
