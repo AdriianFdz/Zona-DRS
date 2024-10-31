@@ -55,4 +55,4 @@ class Reparacion(models.Model):
     mecanico = models.ManyToManyField(Mecanico, related_name='reparaciones')
 
     def __str__(self):
-        return self.id
+        return str(self.id)
