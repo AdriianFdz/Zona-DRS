@@ -17,7 +17,7 @@
         <tr>
             {% for vehiculo in vehiculos %}
             <td>
-                <a>
+                <a href="{% url 'detalleVehiculo' vehiculo.matricula %}">
                     {{ vehiculo.matricula }}
                 </a>
                 <br>
