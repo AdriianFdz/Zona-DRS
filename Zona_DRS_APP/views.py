@@ -18,5 +18,14 @@ def listaMecanicos(request):
 
 def listaVehiculos(request):
     vehiculos = Vehiculo.objects.order_by("matricula")
-    vehiculo_matricula_modelo = ', '.join([vehiculo.matricula + ' (' + propietario.modelo + ')' for vehiculo in vehiculos])
+    vehiculo_matricula_modelo = ', '.join([vehiculo.matricula + ' (' + vehiculo.modelo + ')' for vehiculo in vehiculos])
     return HttpResponse(vehiculo_matricula_modelo)
+
+def listaReparaciones(request):
+    reparaciones = Reparacion.objects.order_by('fecha_inicio')
+    reparacion_info = '\n'.join([
+        f"{reparacion.fecha_inicio} - {reparacion.fecha_fin} | {reparacion.vehiculo.matricula} | " +
+        ", ".join([mecanico.nombre for mecanico in reparacion.mecanico.all()])
+        for reparacion in reparaciones
+    ])
+    return HttpResponse(reparacion_info)
