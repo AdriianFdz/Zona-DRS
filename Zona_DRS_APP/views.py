@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from .models import Propietario, Mecanico, Vehiculo, Reparacion
 
 def index(request):
-    return HttpResponse('primera vista')
+    return  render(request, 'index.html')
 
 
 def listaPropietarios(request):
