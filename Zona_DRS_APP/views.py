@@ -13,8 +13,14 @@ def listaPropietarios(request):
 
 def listaMecanicos(request):
     mecanicos = Mecanico.objects.order_by('nombre')
-    nombre_num_ss_mecanicos = ', '.join([mecanico.nombre + ' (' + mecanico.num_ss + ')' for mecanico in mecanicos])
-    return HttpResponse(nombre_num_ss_mecanicos)
+    return render(request, 'listaMecanicos.html', {'mecanicos': mecanicos})
+
+def detalleMecanico(request, num_ss):
+    try:
+        mecanico = Mecanico.objects.get(num_ss=num_ss)
+        return render(request, 'detalleMecanico.html', {'mecanico': mecanico})
+    except Mecanico.DoesNotExist:
+        return HttpResponseNotFound('No existe el mecánico con el número de la Seguridad Social proporcionado.')
 
 def listaVehiculos(request):
     vehiculos = Vehiculo.objects.order_by("matricula")

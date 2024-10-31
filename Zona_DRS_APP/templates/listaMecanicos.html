@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonaDRS - Mecánicos</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Nombre completo</th>
+            <th>Numero SS</th>
+            <th>Fecha de nacimiento</th>
+        </tr>
+        {% for mecanico in mecanicos %}
+        <tr>
+            <td> <a href="{% url "detalleMecanico" mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }}</a></td>
+            <td>{{ mecanico.num_ss }}</td>
+            <td>{{ mecanico.fecha_nacimiento }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
