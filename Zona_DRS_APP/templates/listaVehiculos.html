@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonaDRS - Vehiculos</title>
+</head>
+<body>
+    <h1>Lista de Vehiculos</h1>
+    <table>
+        <tr>
+            <th>Matricula</th>
+            <th>Tipo</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+        </tr>
+        <tr>
+            {% for vehiculo in vehiculos %}
+            <td>
+                <a>
+                    {{ vehiculo.matricula }}
+                </a>
+                <br>
+            </td>
+            <td>
+                {{ vehiculo.tipo }}
+            </td>
+            <td>
+                {{ vehiculo.marca }}
+            </td>
+            <td>
+                {{ vehiculo.modelo }}
+            </td>
+
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>
