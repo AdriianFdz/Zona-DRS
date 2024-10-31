@@ -9,7 +9,7 @@ def index(request):
 def listaPropietarios(request):
     propietarios = Propietario.objects.order_by('nombre')
     nombre_dni_propietarios = ', '.join([propietario.nombre + ' (' + propietario.dni + ')' for propietario in propietarios])
-    return render(request, 'listaPropietarios.html', {'propietarios': propietarios});
+    return render(request, 'listaPropietarios.html', {'propietarios': propietarios})
 
 def detallePropietario(request, dni):
         propietario = Propietario.objects.get(dni=dni)
@@ -29,7 +29,7 @@ def detalleMecanico(request, num_ss):
 
 def listaVehiculos(request):
     vehiculos = Vehiculo.objects.order_by("matricula")
-    return render(request, 'listaVehiculos.html', {'vehiculos': vehiculos});
+    return render(request, 'listaVehiculos.html', {'vehiculos': vehiculos})
 
 def detalleVehiculo(request, matricula):
     try:
@@ -40,12 +40,13 @@ def detalleVehiculo(request, matricula):
         return HttpResponseNotFound('No existe el vehículo con la matrícula proporcionada.')
 
 def listaReparaciones(request):
-    reparaciones = Reparacion.objects.order_by('fecha_inicio')
-    reparacion_info = '\n'.join([
-        f"{reparacion.fecha_inicio} - {reparacion.fecha_fin} | {reparacion.vehiculo.matricula} | " +
-        ", ".join([mecanico.nombre for mecanico in reparacion.mecanico.all()])
-        for reparacion in reparaciones
-    ])
-    return HttpResponse(reparacion_info)
+    reparaciones = Reparacion.objects.order_by('id')
+    return render(request, 'listaReparaciones.html', {'reparaciones': reparaciones})
 
+def detalleReparacion(request, id):
+    try:
+        reparacion = Reparacion.objects.get(id=id)
+        return render(request, 'detalleReparacion.html', {'reparacion': reparacion})
+    except Reparacion.DoesNotExist:
+        return HttpResponseNotFound('No existe la reparación con el identificador proporcionado.')
         

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reparacion: {{reparacion.id}} - ZonaDRS</title>
+</head>
+<body>
+    <h1>Detalle de Reparacion</h1>
+    <img src="{{reparacion.imagen_url}}" alt="Imagen de reparacion con ID: {{reparacion.id}}">
+    <p><strong>ID:</strong> {{ reparacion.id }}</p>
+    <p><strong>Fecha inicio:</strong> {{ reparacion.fecha_inicio }}</p>
+    <p><strong>Fecha fin:</strong> {{ reparacion.fecha_fin }}</p>
+    <p><strong>Coste:</strong> {{ reparacion.coste }}</p>
+    <p><strong>Vehiculo:</strong> <a href="{% url 'detalleVehiculo' reparacion.vehiculo.matricula %}">{{ reparacion.vehiculo }}</a></p>
+    <p><strong>Mecanicos:</strong></p> 
+    <ul>
+        {% for mecanico in reparacion.mecanico.all %}
+        <li><a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico }}</a></li> 
+        {% endfor %}
+    </ul>
+</body>
+</html>

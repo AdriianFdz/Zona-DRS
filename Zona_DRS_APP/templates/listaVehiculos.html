@@ -14,8 +14,9 @@
             <th>Marca</th>
             <th>Modelo</th>
         </tr>
-        <tr>
+        
             {% for vehiculo in vehiculos %}
+        <tr>    
             <td>
                 <a href="{% url 'detalleVehiculo' vehiculo.matricula %}">
                     {{ vehiculo.matricula }}
@@ -31,9 +32,8 @@
             <td>
                 {{ vehiculo.modelo }}
             </td>
-
-            {% endfor %}
         </tr>
+            {% endfor %}
     </table>
 </body>
 </html>
