@@ -10,7 +10,7 @@ class Propietario(models.Model):
     fecha_nacimiento = models.DateField()
 
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} {self.apellido1} {self.apellido2}"
     
 class Mecanico(models.Model):
     num_ss = models.CharField(max_length=12, primary_key=True)
@@ -24,7 +24,7 @@ class Mecanico(models.Model):
     imagen_url = models.URLField()
 
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} {self.apellido1} {self.apellido2}"
     
 class Vehiculo(models.Model):
     matricula = models.CharField(max_length=7, primary_key=True)
