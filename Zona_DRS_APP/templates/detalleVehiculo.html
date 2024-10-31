@@ -17,7 +17,7 @@
     <p><strong>Reparaciones:</strong></p>
     <ul>
         {% for reparacion in reparaciones %}
-            <li><a href="{% url 'detalleReparacion' reparacion.id %}">{{ reparacion.fecha }} - {{ reparacion.descripcion }}</a></li>
+            <li><a href="{% url 'detalleReparacion' reparacion.id %}">Nº de reparación: {{reparacion.id}} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</a></li>
         {% endfor %}
     </ul>
 </body>
