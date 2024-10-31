@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Detalle del Vehículo</h1>
+    <p><strong>Matrícula:</strong> {{ vehiculo.matricula }}</p>
+    <p><strong>Tipo:</strong> {{ vehiculo.tipo }}</p>
+    <p><strong>Marca:</strong> {{ vehiculo.marca }}</p>
+    <p><strong>Modelo:</strong> {{ vehiculo.modelo }}</p>
+    <p><strong>Color:</strong> {{ vehiculo.color }}</p>
+    <p><strong>Fecha de Fabricación:</strong> {{ vehiculo.fecha_fabricacion }}</p>
+    <p><strong>Propietario:</strong></p><a href="{% url 'detallePropietario' vehiculo.propietario.dni %}">{{ vehiculo.propietario }}</a>
+</body>
+</html>

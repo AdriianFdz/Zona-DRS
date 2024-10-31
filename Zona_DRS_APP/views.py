@@ -11,6 +11,10 @@ def listaPropietarios(request):
     nombre_dni_propietarios = ', '.join([propietario.nombre + ' (' + propietario.dni + ')' for propietario in propietarios])
     return render(request, 'listaPropietarios.html', {'propietarios': propietarios});
 
+def detallePropietario(request, dni):
+        propietario = Propietario.objects.get(dni=dni)
+        return render(request, 'detallePropietario.html', {'propietario': propietario});
+
 def listaMecanicos(request):
     mecanicos = Mecanico.objects.order_by('nombre')
     return render(request, 'listaMecanicos.html', {'mecanicos': mecanicos})
@@ -27,6 +31,13 @@ def listaVehiculos(request):
     vehiculo_matricula_modelo = ', '.join([vehiculo.matricula + ' (' + vehiculo.modelo + ')' for vehiculo in vehiculos])
     return HttpResponse(vehiculo_matricula_modelo)
 
+def detalleVehiculo(request, matricula):
+    try:
+        vehiculo = Vehiculo.objects.get(matricula=matricula)
+        return render(request, 'detalleVehiculo.html', {'vehiculo': vehiculo})
+    except Vehiculo.DoesNotExist:
+        return HttpResponseNotFound('No existe el vehículo con la matrícula proporcionada.')
+
 def listaReparaciones(request):
     reparaciones = Reparacion.objects.order_by('fecha_inicio')
     reparacion_info = '\n'.join([
@@ -36,7 +47,4 @@ def listaReparaciones(request):
     ])
     return HttpResponse(reparacion_info)
 
-def detallePropietario(request, dni):
-        propietario = Propietario.objects.get(dni=dni)
-        return render(request, 'detallePropietario.html', {'propietario': propietario});
         

@@ -14,7 +14,7 @@
         </tr>
         {% for mecanico in mecanicos %}
         <tr>
-            <td> <a href="{% url "detalleMecanico" mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }}</a></td>
+            <td> <a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }}</a></td>
             <td>{{ mecanico.num_ss }}</td>
             <td>{{ mecanico.fecha_nacimiento }}</td>
         </tr>
