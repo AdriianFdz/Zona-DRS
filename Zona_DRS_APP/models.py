@@ -21,6 +21,7 @@ class Mecanico(models.Model):
     fecha_nacimiento = models.DateField()
     fecha_inicio_contrato = models.DateField()
     fecha_fin_contrato = models.DateField()
+    imagen_url = models.URLField()
 
     def __str__(self):
         return self.nombre
@@ -49,6 +50,7 @@ class Reparacion(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     coste = models.FloatField()
+    imagen_url = models.URLField()
     vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
     mecanico = models.ManyToManyField(Mecanico, related_name='reparaciones')
 
