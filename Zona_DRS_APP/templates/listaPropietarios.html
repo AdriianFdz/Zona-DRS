@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Lista de Propietarios</title>
+</head>
+<body>
+    <h1>Lista de Propietarios</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>DNI</th>
+        </tr>
+        <tr>
+            {% for propietario in propietarios %}
+            <td>
+                <a href="{% url 'detallePropietario' propietario.dni %}">
+                    {{ propietario.nombre }}
+                </a>
+                <br>
+            </td>
+            <td>
+                {{ propietario.dni }}
+            </td>
+            
+            {% endfor %}
+        </tr>
+    </table>
+
+
+</body>
+</html>

@@ -9,7 +9,7 @@ def index(request):
 def listaPropietarios(request):
     propietarios = Propietario.objects.order_by('nombre')
     nombre_dni_propietarios = ', '.join([propietario.nombre + ' (' + propietario.dni + ')' for propietario in propietarios])
-    return HttpResponse(nombre_dni_propietarios)
+    return render(request, 'listaPropietarios.html', {'propietarios': propietarios});
 
 def listaMecanicos(request):
     mecanicos = Mecanico.objects.order_by('nombre')
@@ -29,3 +29,8 @@ def listaReparaciones(request):
         for reparacion in reparaciones
     ])
     return HttpResponse(reparacion_info)
+
+def detallePropietario(request, dni):
+        propietario = Propietario.objects.get(pk=dni)
+        return render(request, 'detallePropietario.html', {'propietario': propietario});
+        

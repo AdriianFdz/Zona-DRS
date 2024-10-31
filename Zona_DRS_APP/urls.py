@@ -7,4 +7,5 @@ urlpatterns = [
             path('listaMecanicos/', views.listaMecanicos, name='listaMecanicos'),
             path('listaVehiculos/', views.listaVehiculos, name='listaVehiculos'),
             path('listaReparaciones/', views.listaReparaciones, name='listaReparaciones'),
+            path('detallePropietario/<str:dni>/', views.detallePropietario, name='detallePropietario'),
 ]
