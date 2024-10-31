@@ -28,8 +28,7 @@ def detalleMecanico(request, num_ss):
 
 def listaVehiculos(request):
     vehiculos = Vehiculo.objects.order_by("matricula")
-    vehiculo_matricula_modelo = ', '.join([vehiculo.matricula + ' (' + vehiculo.modelo + ')' for vehiculo in vehiculos])
-    return HttpResponse(vehiculo_matricula_modelo)
+    return render(request, 'listaVehiculos.html', {'vehiculos': vehiculos});
 
 def detalleVehiculo(request, matricula):
     try:
