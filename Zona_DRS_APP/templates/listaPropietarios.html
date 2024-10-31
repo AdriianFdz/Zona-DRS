@@ -12,8 +12,8 @@
             <th>Nombre</th>
             <th>DNI</th>
         </tr>
-        <tr>
             {% for propietario in propietarios %}
+        <tr>
             <td>
                 <a href="{% url 'detallePropietario' propietario.dni %}">
                     {{ propietario.nombre }}
@@ -22,9 +22,8 @@
             <td>
                 {{ propietario.dni }}
             </td>
-            
-            {% endfor %}
-        </tr>
+        </tr>    
+            {% endfor %}   
     </table>
 </body>
 </html>
