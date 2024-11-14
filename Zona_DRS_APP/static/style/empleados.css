@@ -1,0 +1,40 @@
+/* Estilos para la página de Empleados */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    font-size: 2em;
+}
+
+/* Estilos solo para la lista de empleados */
+.empleados-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.empleados-lista li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.empleados-lista li:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}

@@ -1,0 +1,49 @@
+/* Estilos para la barra de navegación compartida */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    text-align: center;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #333;
+    color: #f9d71c;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.sidebar h1 {
+    margin: 0 0 20px;
+    font-size: 2vw;
+}
+
+.sidebar a{
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    font-size: 1.2vw;
+    cursor: pointer;
+    border: 0.5px solid #f9d71c;
+    background-color: #444;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+    background-color: #555;
+}

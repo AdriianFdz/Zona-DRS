@@ -1,25 +1,29 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZonaDRS - Mecánicos</title>
-</head>
-<body>
-    <h1>Lista de Mecanicos</h1>
-    <table>
+{% extends "base.html" %}
+{% block contenido %}
+    <div class="content">
+        <h2>Mecanicos</h2>
+<table>
         <tr>
-            <th>Nombre completo</th>
-            <th>Numero SS</th>
-            <th>Fecha de nacimiento</th>
+            <th>Nombre</th>
+            <th>1º Apellido</th>
+            <th>2º Apellido</th>
+            <th>Num SS</th>
+            <th></th>
         </tr>
         {% for mecanico in mecanicos %}
         <tr>
-            <td> <a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }}</a></td>
-            <td>{{ mecanico.num_ss }}</td>
-            <td>{{ mecanico.fecha_nacimiento }}</td>
-        </tr>
+                <td>{{ mecanico.nombre }}</td>
+                <td>{{ mecanico.apellido1 }}</td>
+                <td>{{ mecanico.apellido2 }}</td>
+                <td>{{ mecanico.num_ss }}</td>
+                <td>
+                    <a href="{% url 'detalleMecanico' mecanico.num_ss %}">
+                        Ver más
+                    </a>
+                </td>
+            </tr>
         {% endfor %}
+        
     </table>
-</body>
-</html>
+    </div>
+{% endblock %}

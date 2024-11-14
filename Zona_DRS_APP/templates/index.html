@@ -1,15 +1,23 @@
-<html>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <title>Menú Principal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla Principal - Taller</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="{% static 'style/index.css' %}">
 </head>
 <body>
-    <h1>Menú Principal</h1>
-    <p>Elige una opción:</p>
-    <ul>
-        <li><a href="{% url 'listaPropietarios' %}">Ver Lista de Propietarios</a></li>
-        <li><a href="{% url 'listaVehiculos' %}">Ver Lista de Vehículos</a></li>
-        <li><a href="{% url 'listaMecanicos' %}">Ver Lista de Mecanicos</a></li>
-        <li><a href="{% url 'listaReparaciones' %}">Ver Lista de Reparaciones</a></li>
-    </ul>
+    <div class="main-screen">
+        <h1>Bienvenido al Panel de Administración del Taller</h1>
+        <div class="menu-grid">
+            <a href="{% url 'listaVehiculos' %}" class="menu-item">Vehículos</a>
+            <a href="{% url 'listaMecanicos' %}" class="menu-item">Mecánicos</a>
+            <a href="{% url 'listaReparaciones' %}" class="menu-item">Reparaciones</a>
+            <a href="{% url 'listaPropietarios' %}" class="menu-item">Propietarios</a>
+        </div>
+    </div>
 </body>
 </html>

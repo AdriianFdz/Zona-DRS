@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZonaDRS - Propietarios</title>
-</head>
-<body>
-    <h1>Lista de Propietarios</h1>
+{% extends "base.html" %}
+{% block contenido %}
+    <h2>Propietarios</h2>
     <table>
         <tr>
-            <th>Nombre completo</th>
+            <th>Nombre</th>
+            <th>1º Apellido</th>
+            <th>2º Apellido</th>
             <th>DNI</th>
+            <th></th>
         </tr>
-            {% for propietario in propietarios %}
+        {% for propietario in propietarios %}
         <tr>
-            <td>
-                <a href="{% url 'detallePropietario' propietario.dni %}">
-                    {{ propietario }}
-                </a>
-            </td>
-            <td>
-                {{ propietario.dni }}
-            </td>
-        </tr>    
-            {% endfor %}   
+                <td>{{ propietario.nombre }}</td>
+                <td>{{ propietario.apellido1 }}</td>
+                <td>{{ propietario.apellido2 }}</td>
+                <td>{{ propietario.dni }}</td>
+                <td>
+                    <a href="{% url 'detallePropietario' propietario.dni %}">
+                        Ver más
+                    </a>
+
+                </td>
+            </tr> 
+        {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}

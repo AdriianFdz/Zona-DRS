@@ -1,39 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZonaDRS - Reparaciones</title>
-</head>
-<body>
-    <h1>Lista de Reparaciones</h1>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Fecha inicio</th>
-            <th>Fecha fin</th>
-            <th>Vehiculo</th>
-        </tr>
+{% extends "base.html" %}
+{% block contenido %}
+    <div class="content">
+        <h2>Reparaciones</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Fecha inicio</th>
+                <th>Fecha fin</th>
+                <th>Matrícula</th>
+                <th></th>
+            </tr>
             {% for reparacion in reparaciones %}
-        <tr>
-            <td>
-                <a href="{% url 'detalleReparacion' reparacion.id %}">
-                    {{ reparacion.id }}
-                </a>
-                <br>
-            </td>
-            <td>
-                {{ reparacion.fecha_inicio }}
-            </td>
-            <td>
-                {{ reparacion.fecha_fin }}
-            </td>
-            <td>
-                {{ reparacion.vehiculo }}
-            </td>
-        </tr>
+            <tr>
+                <td>{{ reparacion.id }}</td>
+                <td>{{ reparacion.fecha_inicio }}</td>
+                <td>{{ reparacion.fecha_fin }}</td>
+                <td>{{ reparacion.vehiculo.matricula }}</td>
+                <td>
+                    <a href="{% url 'detalleReparacion' reparacion.id %}">
+                        Ver más
+                    </a>
+                </td>
+            </tr>
             {% endfor %}
-        
-    </table>
-</body>
-</html>
+        </table>
+    </div>
+{% endblock %}
