@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "node-mailjet": "^6.0.6"
+  }
+}
