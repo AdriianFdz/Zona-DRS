@@ -27,11 +27,34 @@ def send_email(obj):
                 "Subject": "Reparación finalizada",
                 "TextPart": f"Hola, su reparación ha sido finalizada.",
                 "HTMLPart": f"""
-                    <h3>Estimado {obj.vehiculo.propietario.nombre} {obj.vehiculo.propietario.apellido1},</h3>
-                    <p>La reparación de su vehículo <b>{obj.vehiculo.modelo} {obj.vehiculo.marca}</b> con matrícula <b>{obj.vehiculo.matricula}</b> ha sido reparado. Puedes recogerlo en nuestro taller.</p>
-                    {imagenes_reparacion}
+                <!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>ZonaDRS - Reparación Completada</title>
+                </head>
+                <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 20px;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <img src="https://i.imgur.com/rwYPUcD.png" alt="Logo ZonaDRS" style="max-height: 100px;">
+                        <h1 style="color: #000000; margin: 0;">ZonaDRS</h1>
+                    </div>
+                    <p>Estimado/a <strong>{obj.vehiculo.propietario.nombre} {obj.vehiculo.propietario.apellido1}</strong>,</p>
+                    <p>
+                        Nos complace informarle que la reparación de su vehículo 
+                        <strong>{obj.vehiculo.marca} {obj.vehiculo.modelo}</strong> con matrícula 
+                        <strong>{obj.vehiculo.matricula}</strong> ha sido completada.
+                    </p>
+                    <p>Puede pasar a recoger su vehículo en nuestro taller.</p>
+                    <p>Le adjuntamos imágenes de las piezas reparadas:</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        {imagenes_reparacion}
+                    </div>
                     <br/>
-                    <p>Gracias por confiar en nuestro taller.</p>
+                    <p>Muchas gracias por confiar en nuestro taller.</p>
+                    <p><strong>ZonaDRS</strong></p>
+                </body>
+                </html>
                 """
             }
         ]
