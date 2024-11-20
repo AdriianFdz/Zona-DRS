@@ -6,8 +6,17 @@ class Propietario(models.Model):
     nombre = models.CharField(max_length=255)
     apellido1 = models.CharField(max_length=255)
     apellido2 = models.CharField(max_length=255)
+    genero = models.CharField(
+        max_length=1,
+        choices=[
+            ('H', 'Hombre'),
+            ('M', 'Mujer')
+        ],
+    )
     direccion = models.CharField(max_length=255)
     fecha_nacimiento = models.DateField()
+    telefono = models.CharField(max_length=9)
+    correo = models.EmailField()
 
     def __str__(self):
         return f"{self.nombre} {self.apellido1} {self.apellido2}"
@@ -50,9 +59,17 @@ class Reparacion(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     coste = models.FloatField()
-    imagen_url = models.URLField()
     vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
     mecanico = models.ManyToManyField(Mecanico, related_name='reparaciones')
 
     def __str__(self):
         return str(self.id)
+    
+    
+class urlImagenesReparacion(models.Model):
+    id = models.AutoField(primary_key=True)
+    url = models.URLField()
+    reparaciones = models.ForeignKey(Reparacion, on_delete=models.CASCADE, related_name='imagenesReparacion')
+    
+    def __str__(self):
+        return self.url

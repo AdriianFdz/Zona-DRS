@@ -26,9 +26,6 @@ urlpatterns = [
     
     # Reparaciones
     path('listaReparaciones/', ListaReparacionesView.as_view(), name='listaReparaciones'),
-    path('reparacion/<int:pk>/', DetalleReparacionView.as_view(), name='detalleReparacion'),
-    
-
-          
+    path('reparacion/<int:pk>/', DetalleReparacionView.as_view(), name='detalleReparacion'),         
       
 ]
