@@ -13,6 +13,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url("https://img.freepik.com/premium-photo/car-repair-service-center-blurred-background_293060-4268.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 .main-screen h1 {

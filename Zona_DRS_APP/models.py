@@ -49,7 +49,7 @@ class Vehiculo(models.Model):
     modelo = models.CharField(max_length=255)
     color = models.CharField(max_length=255)
     fecha_fabricacion = models.DateField()
-    propietario = models.ForeignKey(Propietario, on_delete=models.CASCADE)
+    propietario = models.ForeignKey(Propietario, on_delete=models.CASCADE, related_name='vehiculos')
 
     def __str__(self):
         return self.matricula

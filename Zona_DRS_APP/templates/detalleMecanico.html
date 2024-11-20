@@ -1,23 +1,57 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{mecanico.nombre}} {{mecanico.apellido1}} {{mecanico.apellido2}} - ZonaDRS</title>
-</head>
+{% extends "base.html" %}
+{% block contenido %}
 <body>
-    <h1>{{mecanico.nombre}} {{mecanico.apellido1}} {{mecanico.apellido2}}</h1>
-    <img src="{{mecanico.imagen_url}}" alt="Imagen de {{mecanico.nombre}} {{mecanico.apellido1}} {{mecanico.apellido2}}">
-    <p><strong>Numero de la Seguridad Social:</strong> {{mecanico.num_ss}}</p>
-    <p><strong>Fecha de nacimiento:</strong> {{mecanico.fecha_nacimiento}}</p>
-    <p><strong>Dirección:</strong> {{mecanico.direccion}}</p>
-    <p><strong>Fecha de inicio del contrato:</strong> {{mecanico.fecha_inicio_contrato}}</p>
-    <p><strong>Fecha de fin del contrato:</strong> {{mecanico.fecha_fin_contrato}}</p>
-    <p><strong>Reparaciones:</strong></p>
-    <ul>
-        {% for reparacion in reparaciones %}
-            <li><a href="{% url 'detalleReparacion' reparacion.id %}">Nº de reparación: {{reparacion.id}} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-photo">
+                <img src={{mecanico.imagen_url}} alt="Foto de perfil">
+            </div>
+            <div class="profile-info">
+                <h2>{{mecanico.nombre}} {{mecanico.apellido1}} {{mecanico.apellido2}}</h2>
+                <p>{{mecanico.num_ss}}</p>
+                <div class="section-title">Información adicional</div>
+                <div class="info-item"><strong>Dirección:</strong> {{mecanico.direccion}}</div>
+                <div class="info-item"><strong>Fecha nacimiento:</strong> {{mecanico.fecha_nacimiento}}</div>
+                <div class="info-item"><strong>Inicio contrato:</strong> {{mecanico.fecha_inicio_contrato}}</div>
+                <div class="info-item"><strong>Fin contrato:</strong> {{mecanico.fecha_fin_contrato}}</div>
+            </div>
+        </div>
+        
+        <!-- Cuadro adicional en el lado derecho -->
+        <div class="extra-box">
+            <h2>Reparaciones</h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Buscar por numero de reparación..." id="searchInput">
+                </div>
+            </div>
+            <ul class="reparaciones" id="reparacionesList">
+                {% for reparacion in mecanico.reparaciones.all %}
+                    <li><a href="{% url 'detalleReparacion' reparacion.id %}">Nº de reparación: {{reparacion.id}} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Función de búsqueda por ID
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            let filter = this.value.trim(); // Tomar el valor ingresado y eliminar espacios en blanco
+            let list = document.getElementById('reparacionesList');
+            let items = list.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                let link = items[i].getElementsByTagName('a')[0];
+                let idText = link.textContent.split(':')[1].split('|')[0].trim(); // Extraer solo el número de ID
+
+                if (idText.startsWith(filter)) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+
 </body>
-</html>
+{% endblock %}

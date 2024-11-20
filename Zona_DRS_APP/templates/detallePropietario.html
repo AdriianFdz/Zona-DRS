@@ -1,21 +1,60 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{propietario.nombre}} {{propietario.apellido1}} {{propietario.apellido2}} - ZonaDRS</title>
-</head>
+{% extends "base.html" %}
+{% block contenido %}
 <body>
-    <h1>{{propietario.nombre}} {{propietario.apellido1}} {{propietario.apellido2}}</h1>
-    <p><strong>DNI:</strong> {{propietario.dni}}</p>
-    <p><strong>Nombre completo:</strong> {{propietario.nombre}} {{propietario.apellido1}} {{propietario.apellido2}}</p>
-    <p><strong>Fecha de nacimiento:</strong> {{propietario.fecha_nacimiento}}</p>
-    <p><strong>Dirección:</strong> {{propietario.direccion}}</p>
-    <p><strong>Vehículos:</strong></p>
-    <ul>
-        {% for vehiculo in vehiculos %}
-            <li><a href="{% url 'detalleVehiculo' vehiculo.matricula %}"> {{vehiculo.marca}} {{vehiculo.modelo}} ({{ vehiculo }})</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-photo">
+                <img src="https://cdn-icons-png.flaticon.com/512/5951/5951752.png" alt="Foto de perfil">
+            </div>
+            <div class="profile-info">
+                <h2>{{propietario.nombre}} {{propietario.apellido1}} {{propietario.apellido2}}</h2>
+                <p>{{propietario.dni}}</p>
+                <div class="section-title">Información adicional</div>
+                <div class="info-item"><strong>Dirección:</strong> {{propietario.direccion}}</div>
+                <div class="info-item"><strong>Fecha nacimiento:</strong> {{propietario.fecha_nacimiento}}</div>
+            </div>
+        </div>
+        
+        <!-- Cuadro adicional en el lado derecho -->
+        <div class="extra-box">
+            <h2>Vehiculos</h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Buscar por numero de reparación..." id="searchInput">
+                </div>
+            </div>
+            <ul class="reparaciones" id="reparacionesList">
+                {% for vehiculo in propietario.vehiculos.all %}
+                    <li><a href="{% url 'detalleVehiculo' vehiculo.matricula %}">{{ vehiculo.tipo }} | {{vehiculo.matricula}} | {{ vehiculo.marca }} {{ vehiculo.modelo }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Función de búsqueda por matrícula
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            let filter = this.value.toLowerCase().trim(); // Convertir el valor a minúsculas y eliminar espacios en blanco
+            let list = document.getElementById('reparacionesList');
+            let items = list.getElementsByTagName('li'); // Obtener todos los elementos <li>
+            
+            for (let i = 0; i < items.length; i++) { // Recorrer cada <li>
+                let link = items[i].getElementsByTagName('a')[0]; // Seleccionar el primer enlace dentro del <li>
+                let textContent = link.textContent.toLowerCase(); // Obtener el texto del enlace en minúsculas
+                
+                // Dividir el texto para extraer el campo de matrícula
+                let matriculaText = textContent.split('|')[1].trim(); // Matrícula es el segundo campo, separado por '|'
+                
+                // Mostrar u ocultar el <li> según si coincide el filtro
+                if (matriculaText.includes(filter)) {
+                    items[i].style.display = ''; // Mostrar si coincide
+                } else {
+                    items[i].style.display = 'none'; // Ocultar si no coincide
+                }
+            }
+        });
+    </script>
+    
+
 </body>
-</html>
+{% endblock %}
