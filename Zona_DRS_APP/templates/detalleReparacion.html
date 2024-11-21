@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block contenido %}
-<body class="contenedor">    
-    <h1>Detalle de la Reparación</h1>
+<body>    
     <div class="container">
       <div class="carousel">
         <div class="carousel-images">
@@ -13,14 +12,25 @@
         <button class="prev-btn">‹</button>
         <button class="next-btn">›</button>
       </div>
-      <div class="details">
-        <h2>Detalles</h2>
-        <p>Este panel puede contener información sobre la reparación, como el diagnóstico, costos y tiempos estimados.</p>
-        <ul>
-          <li>Diagnóstico: Problema en el sistema eléctrico</li>
-          <li>Costo estimado: $150</li>
-          <li>Tiempo de reparación: 2 días</li>
-        </ul>
+      <div id="panel-derecho">
+        <div class="extra-box2">
+          <h2>Reparacion número {{reparacion.id}}</h2>
+          <ul class="reparaciones" id="reparacionesList">
+            <li><a href="{% url 'detalleVehiculo' reparacion.vehiculo.matricula %}">{{ reparacion.vehiculo.tipo }} | {{reparacion.vehiculo.matricula}} | {{ reparacion.vehiculo.marca }} {{ reparacion.vehiculo.modelo }}</a></li>
+          </ul>
+          <p>Fecha inicio: {{reparacion.fecha_inicio}}</p>
+          <p>Fecha fin: {{reparacion.fecha_fin}}</p>
+          <p>Coste: {{reparacion.coste}} €</p>
+        </div>
+        <div class="extra-box2">
+          <h2>Mecánicos</h2>
+          <ul class="reparaciones" id="reparacionesList">
+          {% for mecanico in reparacion.mecanico.all %}
+            <li><a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }} | {{mecanico.num_ss}}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+
       </div>
     </div>
         <script>

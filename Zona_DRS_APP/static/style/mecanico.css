@@ -9,13 +9,16 @@ body {
 }
 
 /* Contenedor principal que alinea los cuadros horizontalmente */
-.container {
+.container2 {
     display: flex;
     gap: 20px;
     padding: 20px;
     width: 100%;
     height: calc(100vh - 40px); /* Ocupa toda la altura menos el padding */
     box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    height: fit-content;
 }
 
 /* Cuadro de perfil a la izquierda */
@@ -41,10 +44,6 @@ body {
     border-radius: 50%;
     object-fit: cover;
     transition: transform 0.3s ease;
-}
-
-.profile-photo img:hover {
-    transform: scale(1.05);
 }
 
 .profile-info {
