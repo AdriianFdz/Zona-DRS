@@ -17,10 +17,11 @@
                 <td>{{ propietario.apellido2 }}</td>
                 <td>{{ propietario.dni }}</td>
                 <td>
-                    <a href="{% url 'detallePropietario' propietario.dni %}">
-                        Ver más
-                    </a>
-
+                    <div class="boton">
+                        <a href="{% url 'detallePropietario' propietario.dni %}">
+                            Ver más
+                        </a>
+                    </div>
                 </td>
             </tr> 
         {% endfor %}

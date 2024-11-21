@@ -17,9 +17,11 @@
                 <td>{{ mecanico.apellido2 }}</td>
                 <td>{{ mecanico.num_ss }}</td>
                 <td>
-                    <a href="{% url 'detalleMecanico' mecanico.num_ss %}">
-                        Ver más
-                    </a>
+                    <div class="boton">
+                        <a href="{% url 'detalleMecanico' mecanico.num_ss %}">
+                            Ver más
+                        </a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}

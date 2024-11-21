@@ -17,9 +17,11 @@
                 <td>{{ reparacion.fecha_fin }}</td>
                 <td>{{ reparacion.vehiculo.matricula }}</td>
                 <td>
-                    <a href="{% url 'detalleReparacion' reparacion.id %}">
-                        Ver más
-                    </a>
+                    <div class="boton">
+                        <a href="{% url 'detalleReparacion' reparacion.id %}">
+                          Ver más
+                        </a>
+                    </div>
                 </td>
             </tr>
             {% endfor %}
