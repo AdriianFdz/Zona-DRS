@@ -1,11 +1,14 @@
 from mailjet_rest import Client ## Crear README
 from django.contrib.staticfiles.storage import staticfiles_storage
+import os
+from dotenv import load_dotenv
 
-api_key = "393a85964b33b20c11f0df6932330dd1"
-api_secret = "90dced41296f8ae4052a8d5074824bf4"
 
+load_dotenv()
+api_key = os.getenv("API_KEY")
+api_secret_key = os.getenv("API_SECRET_KEY")
 def send_email(obj):
-    mailjet = Client(auth=(api_key, api_secret), version='v3.1')
+    mailjet = Client(auth=(api_key, api_secret_key), version='v3.1')
     imagenes = obj.imagenesReparacion.all()
     imagenes_reparacion = "" 
     for imagen in imagenes:
