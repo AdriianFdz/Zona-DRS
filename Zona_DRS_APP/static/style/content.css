@@ -9,6 +9,10 @@ body {
     padding: 20px;
 }
 
+h2 {
+    padding-top: 20px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -33,16 +37,35 @@ table td:last-child {
 
 
 .boton a {
-    background-color: #f9d71c; /* Color de fondo amarillo */
-    color: #333; /* Texto negro */
+    background-color: #f9d71c; 
+    color: #333; 
     border: none;
-    border-radius: 25px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 25px;
+    padding: 10px 20px;
     text-align: center;
-    text-decoration: none; /* Sin subrayado */
+    text-decoration: none; 
     font-size: 1em;
     font-weight: bold;
     display: inline-block;
     display: block; 
-    margin: 0; /* Asegúrate de que no tenga márgenes adicionales */
+    margin: 0; 
+}
+
+
+.boton_admin {
+    position: fixed;
+    bottom: 20px;
+    left: 55%;
+    background-color: #FFD400; 
+    color: #000;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em; 
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease;
 }

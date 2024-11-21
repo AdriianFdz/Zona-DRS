@@ -1,10 +1,15 @@
 {% extends "base.html" %}
+{% load static %}
 {% block contenido %}
 <body>
     <div class="container">
         <div class="profile-container">
             <div class="profile-photo">
-                <img src="https://cdn-icons-png.flaticon.com/512/5951/5951752.png" alt="Foto de perfil">
+                {% if propietario.genero == 'H' %}
+                    <img src="{% static 'img/man-icon.png' %}" alt="Foto de hombre">
+                {% elif propietario.genero == 'M' %}
+                    <img src="{% static 'img/woman-icon.png' %}" alt="Foto de mujer">
+                {% endif %}
             </div>
             <div class="profile-info">
                 <h2>{{propietario.nombre}} {{propietario.apellido1}} {{propietario.apellido2}}</h2>
