@@ -17,13 +17,15 @@
                 <td>{{ mecanico.apellido2 }}</td>
                 <td>{{ mecanico.num_ss }}</td>
                 <td>
-                    <a href="{% url 'detalleMecanico' mecanico.num_ss %}">
-                        Ver más
-                    </a>
+                    <div class="boton">
+                        <a href="{% url 'detalleMecanico' mecanico.num_ss %}">
+                            Ver más
+                        </a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
-        
     </table>
+    <a href="http://127.0.0.1:8000/admin/Zona_DRS_APP/mecanico/add/" class="boton_admin">Añadir mecánico</a>
     </div>
 {% endblock %}

@@ -17,13 +17,15 @@
                 <td>{{ propietario.apellido2 }}</td>
                 <td>{{ propietario.dni }}</td>
                 <td>
-                    <a href="{% url 'detallePropietario' propietario.dni %}">
-                        Ver más
-                    </a>
-
+                    <div class="boton">
+                        <a href="{% url 'detallePropietario' propietario.dni %}">
+                            Ver más
+                        </a>
+                    </div>
                 </td>
             </tr> 
         {% endfor %}
     </table>
+    <a href="http://127.0.0.1:8000/admin/Zona_DRS_APP/propietario/add" class="boton_admin">Añadir propietario</a>
 </div>
 {% endblock %}

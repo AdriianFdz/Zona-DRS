@@ -44,22 +44,3 @@ body {
 .menu-item:hover {
     background-color: #555;
 }
-
-.boton a {
-    background-color: #FFD400; /* Color de fondo amarillo */
-    color: #000; /* Texto negro */
-    border: none;
-    border-radius: 25px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado interno */
-    text-align: center;
-    text-decoration: none; /* Sin subrayado */
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-.boton:hover {
-    background-color: #e6b800; /* Cambia de color al pasar el ratón */
-}
