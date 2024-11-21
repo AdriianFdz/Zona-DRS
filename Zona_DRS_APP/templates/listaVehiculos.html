@@ -17,9 +17,11 @@
                     <td>{{ vehiculo.marca }}</td>
                     <td>{{ vehiculo.modelo }}</td>
                     <td>
+                    <div class="boton">
                         <a href="{% url 'detalleVehiculo' vehiculo.matricula %}">
                             Ver más
                         </a>
+                    </div>
                     </td>
                 </tr>
             {% endfor %}
