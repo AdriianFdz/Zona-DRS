@@ -7,10 +7,8 @@ api_secret = "90dced41296f8ae4052a8d5074824bf4"
 def send_email(obj):
     mailjet = Client(auth=(api_key, api_secret), version='v3.1')
     imagenes = obj.imagenesReparacion.all()
-    print(imagenes)
     imagenes_reparacion = "" 
     for imagen in imagenes:
-        print(imagen.url)
         imagenes_reparacion += f'<img src="{imagen.url}" alt="Imagen de reparación" style="max-width:100%;"><br/>'
     
     data = {
