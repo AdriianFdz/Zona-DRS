@@ -1,23 +1,51 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reparacion: {{reparacion.id}} - ZonaDRS</title>
-</head>
-<body>
-    <h1>Detalles de Reparacion</h1>
-    <img src="{{reparacion.imagen_url}}" alt="Imagen de reparacion con ID: {{reparacion.id}}">
-    <p><strong>ID:</strong> {{ reparacion.id }}</p>
-    <p><strong>Fecha inicio:</strong> {{ reparacion.fecha_inicio }}</p>
-    <p><strong>Fecha fin:</strong> {{ reparacion.fecha_fin }}</p>
-    <p><strong>Coste:</strong> {{ reparacion.coste }}</p>
-    <p><strong>Vehiculo:</strong> <a href="{% url 'detalleVehiculo' reparacion.vehiculo.matricula %}">{{ reparacion.vehiculo }}</a></p>
-    <p><strong>Mecanicos:</strong></p> 
-    <ul>
-        {% for mecanico in reparacion.mecanico.all %}
-        <li><a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico }}</a></li> 
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<body class="contenedor">    
+    <h1>Detalle de la Reparación</h1>
+    <div class="container">
+      <div class="carousel">
+        <div class="carousel-images">
+        {% for imagen in reparacion.imagenesReparacion.all %}
+          <img src="{{imagen}}" alt="Image 1">
         {% endfor %}
-    </ul>
+        </div>
+        <button class="prev-btn">‹</button>
+        <button class="next-btn">›</button>
+      </div>
+      <div class="details">
+        <h2>Detalles</h2>
+        <p>Este panel puede contener información sobre la reparación, como el diagnóstico, costos y tiempos estimados.</p>
+        <ul>
+          <li>Diagnóstico: Problema en el sistema eléctrico</li>
+          <li>Costo estimado: $150</li>
+          <li>Tiempo de reparación: 2 días</li>
+        </ul>
+      </div>
+    </div>
+        <script>
+            const carouselImages = document.querySelector('.carousel-images');
+const images = document.querySelectorAll('.carousel-images img');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+let currentIndex = 0;
+
+function updateCarousel() {
+  const offset = -currentIndex * 100;
+  carouselImages.style.transform = `translateX(${offset}%)`;
+}
+
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateCarousel();
+});
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateCarousel();
+});
+        </script>
+    </div>
 </body>
-</html>
+{% endblock %}
