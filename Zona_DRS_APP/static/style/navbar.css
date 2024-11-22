@@ -14,6 +14,7 @@ body {
     padding: 20px;
     height: 100vh;
     box-sizing: border-box;
+    
 }
 
 .sidebar h1 {
@@ -23,7 +24,16 @@ body {
 
 .sidebar a{
     color: white;
+    font-weight: bold;
     text-decoration: none;
+}
+
+#index {
+    color: #f9d71c;
+}
+
+.sidebar img {
+    margin-top: 70%;
 }
 
 .sidebar ul {

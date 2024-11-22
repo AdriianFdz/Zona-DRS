@@ -30,7 +30,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%; /* El perfil ocupará un 30% del ancho */
+    width: 40%; /* El perfil ocupará un 30% del ancho */
     max-width: 350px; /* Límite máximo de ancho */
 }
 

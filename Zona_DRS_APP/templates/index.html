@@ -11,14 +11,19 @@
 </head>
 <body>
     <div class="main-screen">
-        <h1>Bienvenido al Panel de Administración del Taller</h1>
-        <div class="menu-grid">
-            <a href="{% url 'listaVehiculos' %}" class="menu-item">Vehículos</a>
-            <a href="{% url 'listaMecanicos' %}" class="menu-item">Mecánicos</a>
-            <a href="{% url 'listaReparaciones' %}" class="menu-item">Reparaciones</a>
-            <a href="{% url 'listaPropietarios' %}" class="menu-item">Propietarios</a>
+        <div class="main">
+            <h1>BIENVENIDO AL PANEL DE TRABAJADORES DE ZONADRS</h1>
+            <div class="menu-grid">
+                <a href="{% url 'listaVehiculos' %}" class="menu-item">Vehículos</a>
+                <a href="{% url 'listaMecanicos' %}" class="menu-item">Mecánicos</a>
+                <a href="{% url 'listaReparaciones' %}" class="menu-item">Reparaciones</a>
+                <a href="{% url 'listaPropietarios' %}" class="menu-item">Propietarios</a>
+            </div>
+            <div id="admin">
+                <a href="http://127.0.0.1:8000/admin" class="menu-item">Admin panel</a>
+            </div>
+    
         </div>
-        
     </div>
 </body>
 </html>

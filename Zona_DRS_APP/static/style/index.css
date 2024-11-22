@@ -6,6 +6,13 @@ body {
     background-color: #f4f4f9;
 }
 
+.main {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border: 2px solid #f9d71c;
+}
+
 .main-screen {
     text-align: center;
     display: flex;
@@ -13,14 +20,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url("https://img.freepik.com/premium-photo/car-repair-service-center-blurred-background_293060-4268.jpg");
+    background-image: url("https://img.freepik.com/fotos-premium/garaje-vehiculos-borroso-taller-automoviles-enfoque-suave-centro-mantenimiento-automoviles-borroso_117038-34734.jpg");
     background-size: cover;
     background-position: center;
 }
 
 .main-screen h1 {
     margin-bottom: 20px;
-    color: #333;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .menu-grid {
@@ -31,16 +40,25 @@ body {
 
 .menu-item {
     padding: 20px;
-    background-color: #333;
-    color: #f9d71c;
+    background-color: #f9d71c;
+    color: black;
     font-size: 1.2em;
     cursor: pointer;
     border-radius: 8px;
     text-align: center;
     transition: background-color 0.3s ease;
     text-decoration: none;
+    border: 3px solid black;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
+
+#admin {
+    margin-top: 20px;
+}
+
 
 .menu-item:hover {
     background-color: #555;
+    color: #f9d71c;
 }
