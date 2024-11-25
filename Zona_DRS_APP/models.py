@@ -59,7 +59,7 @@ class Reparacion(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     coste = models.FloatField()
-    vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
+    vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE, related_name='reparacionVehiculos')
     mecanico = models.ManyToManyField(Mecanico, related_name='reparaciones')
 
     def __str__(self):

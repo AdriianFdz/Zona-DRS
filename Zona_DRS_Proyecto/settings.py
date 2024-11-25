@@ -42,6 +42,17 @@ INSTALLED_APPS = [
     'Zona_DRS_APP'
 ]
 
+JAZZMIN_SETTINGS = {
+    "site_title": "ZonaDRS",  
+    "site_header": "ZonaDRS",
+    "site_brand": "ZonaDRS",
+    "welcome_sign": "Bienvenido al panel de administración de ZonaDRS",
+    "site_logo": "zonaDRSLogo.png",
+    "site_logo_classes": "img-circle",
+    "login_logo": None,
+
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -127,3 +138,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = 'Zona_DRS_APP/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Zona_DRS_APP/static')]
+STATICFILES_DIRS = [BASE_DIR/"Zona_DRS_Proyecto/static"]
