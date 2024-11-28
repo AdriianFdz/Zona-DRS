@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block contenido %}
-    <div class="content">
-        <h2>Mecanicos</h2>
-<table>
+<div class="content">
+    <h2>Mecanicos</h2>
+    <table>
         <tr>
             <th>Nombre</th>
             <th>1º Apellido</th>
@@ -12,20 +12,20 @@
         </tr>
         {% for mecanico in mecanicos %}
         <tr>
-                <td>{{ mecanico.nombre }}</td>
-                <td>{{ mecanico.apellido1 }}</td>
-                <td>{{ mecanico.apellido2 }}</td>
-                <td>{{ mecanico.num_ss }}</td>
-                <td>
-                    <div class="boton">
-                        <a href="{% url 'detalleMecanico' mecanico.num_ss %}">
-                            Ver más
-                        </a>
-                    </div>
-                </td>
-            </tr>
+            <td>{{ mecanico.nombre }}</td>
+            <td>{{ mecanico.apellido1 }}</td>
+            <td>{{ mecanico.apellido2 }}</td>
+            <td>{{ mecanico.num_ss }}</td>
+            <td>
+                <div class="boton">
+                    <a href="{% url 'detalleMecanico' mecanico.num_ss %}">
+                        Ver más
+                    </a>
+                </div>
+            </td>
+        </tr>
         {% endfor %}
     </table>
     <a href="http://127.0.0.1:8000/admin/Zona_DRS_APP/mecanico/add/" class="boton_admin">Añadir mecánico</a>
-    </div>
+</div>
 {% endblock %}

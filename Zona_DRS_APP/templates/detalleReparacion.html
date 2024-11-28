@@ -2,60 +2,58 @@
 {% load static %}
 {% block contenido %}
 <body>    
-    <div class="container">
-      <div class="carousel">
-        <div class="carousel-images">
-          {% for imagen in reparacion.imagenesReparacion.all %}
-            <img src="{{imagen}}" alt="Image 1">
-          {% endfor %}
-        </div>
-        <button class="prev-btn">‹</button>
-        <button class="next-btn">›</button>
+  <div class="container">
+    <div class="carousel">
+      <div class="carousel-images">
+        {% for imagen in reparacion.imagenesReparacion.all %}
+          <img src="{{imagen}}" alt="Image 1">
+        {% endfor %}
       </div>
-      <div id="panel-derecho">
-        <div class="extra-box2">
-          <h2>Reparacion número {{reparacion.id}}</h2>
-          <ul class="reparaciones" id="reparacionesList">
-            <li><a href="{% url 'detalleVehiculo' reparacion.vehiculo.matricula %}">{{ reparacion.vehiculo.tipo }} | {{reparacion.vehiculo.matricula}} | {{ reparacion.vehiculo.marca }} {{ reparacion.vehiculo.modelo }}</a></li>
-          </ul>
-          <p>Fecha inicio: {{reparacion.fecha_inicio}}</p>
-          <p>Fecha fin: {{reparacion.fecha_fin}}</p>
-          <p>Coste: {{reparacion.coste}} €</p>
-        </div>
-        <div class="extra-box2">
-          <h2>Mecánicos</h2>
-          <ul class="reparaciones" id="reparacionesList">
-          {% for mecanico in reparacion.mecanico.all %}
-            <li><a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }} | {{mecanico.num_ss}}</a></li>
-          {% endfor %}
-          </ul>
+      <button class="prev-btn">‹</button>
+      <button class="next-btn">›</button>
+    </div>
+    <div id="panel-derecho">
+      <div class="extra-box2">
+        <h2>Reparacion número {{reparacion.id}}</h2>
+        <ul class="reparaciones" id="reparacionesList">
+          <li><a href="{% url 'detalleVehiculo' reparacion.vehiculo.matricula %}">{{ reparacion.vehiculo.tipo }} | {{reparacion.vehiculo.matricula}} | {{ reparacion.vehiculo.marca }} {{ reparacion.vehiculo.modelo }}</a></li>
+        </ul>
+        <p>Fecha inicio: {{reparacion.fecha_inicio}}</p>
+        <p>Fecha fin: {{reparacion.fecha_fin}}</p>
+        <p>Coste: {{reparacion.coste}} €</p>
       </div>
-
+      <div class="extra-box2">
+        <h2>Mecánicos</h2>
+        <ul class="reparaciones" id="reparacionesList">
+        {% for mecanico in reparacion.mecanico.all %}
+          <li><a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }} | {{mecanico.num_ss}}</a></li>
+        {% endfor %}
+        </ul>
       </div>
     </div>
-        <script>
-            const carouselImages = document.querySelector('.carousel-images');
-const images = document.querySelectorAll('.carousel-images img');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
+  </div>
+  <script>
+  const carouselImages = document.querySelector('.carousel-images');
+  const images = document.querySelectorAll('.carousel-images img');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
 
-let currentIndex = 0;
+  let currentIndex = 0;
 
-function updateCarousel() {
-  const offset = -currentIndex * 100;
-  carouselImages.style.transform = `translateX(${offset}%)`;
-}
+  function updateCarousel() {
+    const offset = -currentIndex * 100;
+    carouselImages.style.transform = `translateX(${offset}%)`;
+  }
 
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  updateCarousel();
-});
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateCarousel();
+  });
 
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % images.length;
-  updateCarousel();
-});
-        </script>
-    </div>
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateCarousel();
+  });
+  </script>
 </body>
 {% endblock %}
