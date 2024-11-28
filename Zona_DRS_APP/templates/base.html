@@ -13,13 +13,18 @@
 </head>
 <body>
     <div class="sidebar">
-        <h1><a id="index" href="{% url 'index' %}">Panel de Trabajadores</a></h1>
+        <a href="{% url 'index' %}">
+            <div id="header">
+                <img src="{% static 'img/zonaDRSLogo.png' %}" alt="index">
+                <h1>ZonaDRS</h1>
+            </div>  
+        </a>
         <ul>
             <a href="{% url 'listaVehiculos' %}" class="menu-item"><li>Vehículos</li></a>
             <a href="{% url 'listaMecanicos' %}" class="menu-item"><li>Mecánicos</li></a>
             <a href="{% url 'listaReparaciones' %}" class="menu-item"><li>Reparaciones</li></a>
             <a href="{% url 'listaPropietarios' %}" class="menu-item"><li>Propietarios</li></a>
-            <img src="{% static 'img/zonaDRSLogo.png' %}" alt="index">
+            
             
         </ul>
     </div>
