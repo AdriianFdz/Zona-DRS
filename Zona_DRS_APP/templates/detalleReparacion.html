@@ -16,7 +16,7 @@
       <div class="extra-box2">
         <h2>Reparacion número {{reparacion.id}}</h2>
         <ul class="reparaciones" id="reparacionesList">
-          <li><a href="{% url 'detalleVehiculo' reparacion.vehiculo.matricula %}">{{ reparacion.vehiculo.tipo }} | {{reparacion.vehiculo.matricula}} | {{ reparacion.vehiculo.marca }} {{ reparacion.vehiculo.modelo }}</a></li>
+          <a href="{% url 'detalleVehiculo' reparacion.vehiculo.matricula %}"><li>{{ reparacion.vehiculo.tipo }} | {{reparacion.vehiculo.matricula}} | {{ reparacion.vehiculo.marca }} {{ reparacion.vehiculo.modelo }}</li></a>
         </ul>
         <p>Fecha inicio: {{reparacion.fecha_inicio}}</p>
         <p>Fecha fin: {{reparacion.fecha_fin}}</p>
@@ -26,7 +26,7 @@
         <h2>Mecánicos</h2>
         <ul class="reparaciones" id="reparacionesList">
         {% for mecanico in reparacion.mecanico.all %}
-          <li><a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }} | {{mecanico.num_ss}}</a></li>
+          <a href="{% url 'detalleMecanico' mecanico.num_ss %}"><li>{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }} | {{mecanico.num_ss}}</li></a>
         {% endfor %}
         </ul>
       </div>
