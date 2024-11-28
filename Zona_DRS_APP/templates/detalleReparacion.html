@@ -5,9 +5,9 @@
     <div class="container">
       <div class="carousel">
         <div class="carousel-images">
-        {% for imagen in reparacion.imagenesReparacion.all %}
-          <img src="{{imagen}}" alt="Image 1">
-        {% endfor %}
+          {% for imagen in reparacion.imagenesReparacion.all %}
+            <img src="{{imagen}}" alt="Image 1">
+          {% endfor %}
         </div>
         <button class="prev-btn">‹</button>
         <button class="next-btn">›</button>
@@ -29,7 +29,7 @@
             <li><a href="{% url 'detalleMecanico' mecanico.num_ss %}">{{ mecanico.nombre }} {{ mecanico.apellido1 }} {{ mecanico.apellido2 }} | {{mecanico.num_ss}}</a></li>
           {% endfor %}
           </ul>
-        </div>
+      </div>
 
       </div>
     </div>
