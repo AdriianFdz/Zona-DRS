@@ -8,7 +8,6 @@ body {
     
 }
 
-/* Contenedor principal que alinea los cuadros horizontalmente */
 .container2 {
     display: flex;
     gap: 20px;
@@ -21,17 +20,16 @@ body {
     height: fit-content;
 }
 
-/* Cuadro de perfil a la izquierda */
 .profile-container {
     display: flex;
-    flex-direction: column; /* Los elementos del perfil se apilan verticalmente */
+    flex-direction: column; 
     gap: 20px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 40%; /* El perfil ocupará un 30% del ancho */
-    max-width: 350px; /* Límite máximo de ancho */
+    width: 40%; 
+    max-width: 350px; 
 }
 
 .profile-photo {
@@ -82,7 +80,6 @@ body {
     color: #333333;
 }
 
-/* Cuadro adicional que ocupa más espacio a la derecha */
 .extra-box {
     background-color: #ffffff;
     padding: 20px;
@@ -90,7 +87,7 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     flex-grow: 1; /* Esto hace que ocupe el resto del espacio */
     text-align: center;
-    width: 70%; /* El cuadro adicional ocupa el 70% del ancho */
+    width: 70%; 
 }
 
 .extra-box h2 {
@@ -152,19 +149,19 @@ body {
 .search-input:focus {
     border-color: #007bff;
 }
-/* Estilo responsivo */
+
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Apilar los cuadros verticalmente en pantallas más pequeñas */
-        align-items: center; /* Centrar los cuadros */
+        flex-direction: column; 
+        align-items: center; 
     }
 
     .profile-container {
-        width: 80%; /* El perfil ocupará el 80% del ancho en pantallas pequeñas */
+        width: 80%; 
         max-width: none;
     }
 
     .extra-box {
-        width: 80%; /* El cuadro adicional ocupará el 80% del ancho en pantallas pequeñas */
+        width: 80%; 
     }
 }
