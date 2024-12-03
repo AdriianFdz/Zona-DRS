@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+
+<body>
+    <div class="container2">
+        <div class="profile-container">
+            <div class="profile-photo">
+                {% if vehiculo.tipo == 'Coche' %}
+                    <img src="{% static 'img/car-icon.jpg' %}" alt="Foto de un coche">
+                {% elif vehiculo.tipo == 'Camión' %}
+                    <img src="{% static 'img/truck-icon.png' %}" alt="Foto de un camion">
+                {% elif vehiculo.tipo == 'Moto' %}
+                    <img src="{% static 'img/moto-icon.png' %}" alt="Foto de una moto">
+                {% endif %}
+            </div>
+            <div class="profile-info">
+                <h2>{{vehiculo.marca}} {{vehiculo.modelo}}</h2>
+                <p>{{propietario.dni}}</p>
+                <div class="section-title">Información adicional</div>
+                <ul class="reparaciones">
+                        <li><a href="{% url 'detallePropietario' vehiculo.propietario.dni %}"><strong>Propietario:</strong> {{vehiculo.propietario.nombre}} {{vehiculo.propietario.apellido1}}     {{vehiculo.propietario.dni}}</a></li> 
+                </ul>
+                <div class="info-item"><strong>Matrícula:</strong> {{ vehiculo.matricula }}</div>
+                <div class="info-item"><strong>Color:</strong> {{ vehiculo.color }}</div>
+                <div class="info-item"><strong>Fecha de Fabricación:</strong> {{ vehiculo.fecha_fabricacion }}</div>
+            </div>
+        </div>
+        
+        <!-- Cuadro adicional en el lado derecho -->
+        <div class="extra-box">
+            <h2>Reparaciones</h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Buscar por numero de reparación..." id="searchInput">
+                </div>
+            </div>
+            <ul class="reparaciones" id="reparacionesList">
+                {% for reparacion in vehiculo.reparacionVehiculos.all %}
+                    <li><a href="{% url 'detalleReparacion' reparacion.id %}">Nº de reparación: {{ reparacion.id }} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</a></li>
+                {% endfor %}   
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            let filter = this.value.trim(); // Tomar el valor ingresado y eliminar espacios en blanco
+            let list = document.getElementById('reparacionesList');
+            let items = list.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                let link = items[i].getElementsByTagName('a')[0];
+                let idText = link.textContent.split(':')[1].split('|')[0].trim(); // Extraer solo el número de ID
+
+                if (idText.startsWith(filter)) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        });
+
+    </script>
+
+</body>
+{% endblock %}
