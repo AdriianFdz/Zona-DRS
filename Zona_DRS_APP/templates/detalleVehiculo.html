@@ -2,12 +2,13 @@
 {% load static %}
 {% block contenido %}
 
+
 <body>
     <div class="container2">
         <div class="profile-container">
             <div class="profile-photo">
                 {% if vehiculo.tipo == 'Coche' %}
-                    <img src="{% static 'img/car-icon.png' %}" alt="Foto de un coche">
+                    <img src="{% static 'img/car-icon.jpg' %}" alt="Foto de un coche">
                 {% elif vehiculo.tipo == 'Camión' %}
                     <img src="{% static 'img/truck-icon.png' %}" alt="Foto de un camion">
                 {% elif vehiculo.tipo == 'Moto' %}
@@ -37,7 +38,7 @@
             </div>
             <ul class="reparaciones" id="reparacionesList">
                 {% for reparacion in vehiculo.reparacionVehiculos.all %}
-                    <a href="{% url 'detalleReparacion' reparacion.id %}"><li>Nº de reparación: {{ reparacion.id }} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</li></a>
+                    <li><a href="{% url 'detalleReparacion' reparacion.id %}">Nº de reparación: {{ reparacion.id }} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</a></li>
                 {% endfor %}   
             </ul>
         </div>
