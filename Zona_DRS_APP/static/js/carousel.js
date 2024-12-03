@@ -6,6 +6,11 @@ function carousel() {
 
     let currentIndex = 0;
 
+    if (images.length === 1 || images.length === 0) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+    }
+
     function updateCarousel() {
         const offset = -currentIndex * 100;
         carouselImages.style.transform = `translateX(${offset}%)`;
@@ -20,5 +25,5 @@ function carousel() {
         currentIndex = (currentIndex + 1) % images.length;
         updateCarousel();
     });
-
 }
+document.addEventListener('DOMContentLoaded', carousel);

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block contenido %}
-<body>
+<body data-page="detalle-propietario">
     <div class="container2">
         <div class="profile-container">
             <div class="profile-photo">
@@ -29,15 +29,11 @@
             </div>
             <ul class="reparaciones" id="reparacionesList">
                 {% for vehiculo in propietario.vehiculos.all %}
-                    <li><a href="{% url 'detalleVehiculo' vehiculo.matricula %}">{{ vehiculo.tipo }} | {{vehiculo.matricula}} | {{ vehiculo.marca }} {{ vehiculo.modelo }}</a></li>
+                    <a href="{% url 'detalleVehiculo' vehiculo.matricula %}"><li>{{ vehiculo.tipo }} | {{vehiculo.matricula}} | {{ vehiculo.marca }} {{ vehiculo.modelo }}</li></a>
                 {% endfor %}
             </ul>
         </div>
     </div>
-
-    <script>
-        filtrarPorMatricula();
-    </script>
     
 
 </body>

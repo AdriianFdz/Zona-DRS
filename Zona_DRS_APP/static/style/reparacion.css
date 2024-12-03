@@ -25,7 +25,8 @@
   
   .carousel {
     position: relative;
-    width: 80%;
+    width: fit-content;
+    height: fit-content;
     max-width: 600px;
     overflow: hidden;
     border-radius: 10px;

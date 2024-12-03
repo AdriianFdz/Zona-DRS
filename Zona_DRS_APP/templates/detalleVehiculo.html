@@ -3,7 +3,7 @@
 {% block contenido %}
 
 
-<body>
+<body data-page="detalle-vehiculo">
     <div class="container2">
         <div class="profile-container">
             <div class="profile-photo">
@@ -20,7 +20,7 @@
                 <p>{{propietario.dni}}</p>
                 <div class="section-title">Información adicional</div>
                 <ul class="reparaciones">
-                        <li><a href="{% url 'detallePropietario' vehiculo.propietario.dni %}"><strong>Propietario:</strong> {{vehiculo.propietario.nombre}} {{vehiculo.propietario.apellido1}}     {{vehiculo.propietario.dni}}</a></li> 
+                    <a href="{% url 'detallePropietario' vehiculo.propietario.dni %}"><li><strong>Propietario:</strong> {{vehiculo.propietario.nombre}} {{vehiculo.propietario.apellido1}}     {{vehiculo.propietario.dni}}</li></a>
                 </ul>
                 <div class="info-item"><strong>Matrícula:</strong> {{ vehiculo.matricula }}</div>
                 <div class="info-item"><strong>Color:</strong> {{ vehiculo.color }}</div>
@@ -38,15 +38,11 @@
             </div>
             <ul class="reparaciones" id="reparacionesList">
                 {% for reparacion in vehiculo.reparacionVehiculos.all %}
-                    <li><a href="{% url 'detalleReparacion' reparacion.id %}">Nº de reparación: {{ reparacion.id }} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</a></li>
+                    <a href="{% url 'detalleReparacion' reparacion.id %}"><li>Nº de reparación: {{ reparacion.id }} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</li></a>
                 {% endfor %}   
             </ul>
         </div>
     </div>
-
-    <script>
-        filtrarPorNumeroReparacion();
-    </script>
 
 </body>
 {% endblock %}
