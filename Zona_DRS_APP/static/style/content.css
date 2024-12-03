@@ -17,12 +17,32 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    display: block; /* Convierte la tabla en un bloque para manejar overflow */
+    max-height: 400px; /* Define la altura máxima visible */
+    overflow-y: auto; /* Habilita el scroll vertical si es necesario */
+    overflow-x: auto; /* Habilita el scroll horizontal para tablas anchas */
+    margin-bottom: 20px; /* Separación con otros elementos */
+    padding: 0 auto;
 }
 
-table, th, td {
+table::-webkit-scrollbar {
+    height: 10px; /* Ancho del scrollbar horizontal */
+    width: 10px; /* Ancho del scrollbar vertical */
+}
+
+table::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color de la barra */
+}
+
+table::-webkit-scrollbar-thumb:hover {
+    background-color: #f9d71c; /* Color al pasar el mouse */
+}
+
+th, td {
     border: 1px solid #ddd;
-    padding: 10px;
+    
     text-align: left;
+    padding: 8px;
 }
 
 th {

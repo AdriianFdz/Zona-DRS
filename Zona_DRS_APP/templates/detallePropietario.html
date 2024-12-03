@@ -20,44 +20,23 @@
             </div>
         </div>
         
-        <!-- Cuadro adicional en el lado derecho -->
         <div class="extra-box">
             <h2>Vehiculos</h2>
             <div class="search-container">
                 <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Buscar por numero de reparación..." id="searchInput">
+                    <input type="text" class="search-input" placeholder="Buscar por matricula..." id="searchInput">
                 </div>
             </div>
             <ul class="reparaciones" id="reparacionesList">
                 {% for vehiculo in propietario.vehiculos.all %}
-                    <a href="{% url 'detalleVehiculo' vehiculo.matricula %}"><li>{{ vehiculo.tipo }} | {{vehiculo.matricula}} | {{ vehiculo.marca }} {{ vehiculo.modelo }}</li></a>
+                    <li><a href="{% url 'detalleVehiculo' vehiculo.matricula %}">{{ vehiculo.tipo }} | {{vehiculo.matricula}} | {{ vehiculo.marca }} {{ vehiculo.modelo }}</a></li>
                 {% endfor %}
             </ul>
         </div>
     </div>
 
     <script>
-        // Función de búsqueda por matrícula
-        document.getElementById('searchInput').addEventListener('keyup', function () {
-            let filter = this.value.toLowerCase().trim(); // Convertir el valor a minúsculas y eliminar espacios en blanco
-            let list = document.getElementById('reparacionesList');
-            let items = list.getElementsByTagName('li'); // Obtener todos los elementos <li>
-            
-            for (let i = 0; i < items.length; i++) { // Recorrer cada <li>
-                let link = items[i].getElementsByTagName('a')[0]; // Seleccionar el primer enlace dentro del <li>
-                let textContent = link.textContent.toLowerCase(); // Obtener el texto del enlace en minúsculas
-                
-                // Dividir el texto para extraer el campo de matrícula
-                let matriculaText = textContent.split('|')[1].trim(); // Matrícula es el segundo campo, separado por '|'
-                
-                // Mostrar u ocultar el <li> según si coincide el filtro
-                if (matriculaText.includes(filter)) {
-                    items[i].style.display = ''; // Mostrar si coincide
-                } else {
-                    items[i].style.display = 'none'; // Ocultar si no coincide
-                }
-            }
-        });
+        filtrarPorMatricula();
     </script>
     
 

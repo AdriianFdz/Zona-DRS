@@ -45,23 +45,7 @@
     </div>
 
     <script>
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            let filter = this.value.trim(); // Tomar el valor ingresado y eliminar espacios en blanco
-            let list = document.getElementById('reparacionesList');
-            let items = list.getElementsByTagName('li');
-
-            for (let i = 0; i < items.length; i++) {
-                let link = items[i].getElementsByTagName('a')[0];
-                let idText = link.textContent.split(':')[1].split('|')[0].trim(); // Extraer solo el número de ID
-
-                if (idText.startsWith(filter)) {
-                    items[i].style.display = '';
-                } else {
-                    items[i].style.display = 'none';
-                }
-            }
-        });
-
+        filtrarPorNumeroReparacion();
     </script>
 
 </body>
