@@ -18,8 +18,8 @@ def send_email(obj):
         'Messages': [
             {
                 "From": {
-                    "Email": "adrianeskolapios@gmail.com",
-                    "Name": "ZonaDRS Taller"
+                    "Email": "tallerzonadrs@gmail.com",
+                    "Name": "ZonaDRS"
                 },
                 "To": [
                     {
