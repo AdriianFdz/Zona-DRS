@@ -30,7 +30,7 @@
             </div>
             <ul class="reparaciones" id="reparacionesList">
                 {% for vehiculo in propietario.vehiculos.all %}
-                    <li><a href="{% url 'detalleVehiculo' vehiculo.matricula %}">{{ vehiculo.tipo }} | {{vehiculo.matricula}} | {{ vehiculo.marca }} {{ vehiculo.modelo }}</a></li>
+                    <a href="{% url 'detalleVehiculo' vehiculo.matricula %}"><li>{{ vehiculo.tipo }} | {{vehiculo.matricula}} | {{ vehiculo.marca }} {{ vehiculo.modelo }}</li></a>
                 {% endfor %}
             </ul>
         </div>

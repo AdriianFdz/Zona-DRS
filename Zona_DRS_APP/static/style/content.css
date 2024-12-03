@@ -30,7 +30,7 @@ th {
     color: #f9d71c;
 }
 
-table td:last-child {
+table td:last-child { /*Modificar la ultima columna de la tabla*/
     width: 10%; 
     white-space: nowrap; /* Evita que el contenido se ajuste a varias líneas */
 }

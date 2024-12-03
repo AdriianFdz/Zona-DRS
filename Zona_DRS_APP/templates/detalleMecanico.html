@@ -27,7 +27,7 @@
             </div>
             <ul class="reparaciones" id="reparacionesList">
                 {% for reparacion in mecanico.reparaciones.all %}
-                    <li><a href="{% url 'detalleReparacion' reparacion.id %}">Nº de reparación: {{reparacion.id}} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</a></li>
+                    <a href="{% url 'detalleReparacion' reparacion.id %}"><li>Nº de reparación: {{reparacion.id}} | {{ reparacion.fecha_inicio }} - {{ reparacion.fecha_fin }}</li></a>
                 {% endfor %}
             </ul>
         </div>
