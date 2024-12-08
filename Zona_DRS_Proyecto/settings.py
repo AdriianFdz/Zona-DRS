@@ -136,6 +136,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_URL = 'Zona_DRS_APP/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Zona_DRS_APP/static')]
-STATICFILES_DIRS = [BASE_DIR/"Zona_DRS_Proyecto/static"]
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Zona_DRS_APP/static'),
+                    os.path.join(BASE_DIR, 'Zona_DRS_Proyecto/static')
+                ]
